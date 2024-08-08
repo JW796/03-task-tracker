@@ -14,8 +14,8 @@ const AddTask = () => {
             {addModal ? (
                 <>
                 <div className="flex items-center justify-center overflow-x-hidden overflow-y-auto fixed inset-0 z-100">
-                    <div className="w-9/12 bg-white rounded-tg shaddow-md relative flex flex-col">
-                    <div className="flex flex-row justify-between p-5">
+                    <div className="w-9/12 max-w-lg bg-white rounded-tg shaddow-md relative flex flex-col">
+                    <div className="flex flex-row justify-between p-5 border-b border-slate-200 rounded-t">
                     <h3 className="text-3xl font-semibold">Add New Task</h3>
                     <button
                     className="px-1 text-gray-400 float-right text-3xl leading-none font-semibold block"
@@ -35,22 +35,29 @@ const AddTask = () => {
                             className="w-full big-gray-200 test-grey-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white"
                                 id="project-name"
                                 type="text" 
-                                placeholder="Project Name"
+                                placeholder="project-name"
                                 required
                             />
                         </div>
                         <div>
-                            <label htmlFor=""></label>
+                            <label htmlFor="">
+                                Task Description
+                            </label>
                             <textarea 
                             className="w-full big-gray-200 test-grey-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white" 
                             id="task-description"
-                            rows="3"
+                            rows="5"
                             placeholder="Task Description"
                             >
 
                             </textarea>
                         </div>
                         </form>
+                        <div className="flex justify-center p-6 border-t border-slate-200 rounded-b">
+                            <button
+                            className="bg-blue-500 text-white font semi-bold uppercase text-sm px-6 py-3 rounded hover:opacity-70"
+                            >Add Task</button>
+                        </div>
                     </div>
                 </div>
                  
