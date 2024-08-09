@@ -3,6 +3,12 @@ import { useState } from "react"
 
 const AddTask = () => {
     const [addModal, setAddModal] = useState(false);
+    const [projectName, setProjectNames] = useState("");
+    const [taskDescription, setTaskDescription] = useState("");
+
+    const handleAdd = () => {
+        setAddModal(false)
+    }
 
     return (
         <>
@@ -34,8 +40,11 @@ const AddTask = () => {
                             <input
                             className="w-full big-gray-200 test-grey-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white"
                                 id="project-name"
+                                projectName="ProjectName"
                                 type="text" 
-                                placeholder="project-name"
+                                placeholder="project Name"
+                                value={projectName}
+                                onChange={handleInput}
                                 required
                             />
                         </div>
@@ -56,7 +65,9 @@ const AddTask = () => {
                         <div className="flex justify-center p-6 border-t border-slate-200 rounded-b">
                             <button
                             className="bg-blue-500 text-white font semi-bold uppercase text-sm px-6 py-3 rounded hover:opacity-70"
-                            >Add Task</button>
+                            onClick={handleAdd}
+                            >
+                                Add Task</button>
                         </div>
                     </div>
                 </div>
