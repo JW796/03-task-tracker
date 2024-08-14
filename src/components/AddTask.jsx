@@ -1,13 +1,27 @@
 import { useState } from "react"
 
 
-const AddTask = () => {
+const AddTask = ({taskList, setTaskList}) => {
     const [addModal, setAddModal] = useState(false);
-    const [projectName, setProjectNames] = useState("");
+    const [projectName, setProjectName] = useState("");
     const [taskDescription, setTaskDescription] = useState("");
 
-    const handleAdd = () => {
+    const handleInput = e => {
+
+        const { name, value} = e.target;
+
+        if (name === "projectName") setProjectName(value)
+        if (name === "taskDescription") setTaskDescription(value)
+    }
+
+    const handleAdd = e => {
+        e.preventDefault();
+        setTaskList(
+            [...taskList, {projectName, taskDescription}]
+        );
         setAddModal(false)
+        setProjectName("");
+        setTaskDescription("");
     }
 
     return (
@@ -20,7 +34,7 @@ const AddTask = () => {
             {addModal ? (
                 <>
                 <div className="flex items-center justify-center overflow-x-hidden overflow-y-auto fixed inset-0 z-100">
-                    <div className="w-9/12 max-w-lg bg-white rounded-tg shaddow-md relative flex flex-col">
+                    <div className="w-9/12 max-w-lg bg-white rounded-tg shaddow-md relative flex flex-col"> 
                     <div className="flex flex-row justify-between p-5 border-b border-slate-200 rounded-t">
                     <h3 className="text-3xl font-semibold">Add New Task</h3>
                     <button
@@ -30,7 +44,7 @@ const AddTask = () => {
                         x
                     </button>
                     </div>
-                    <form className="p-6">
+                    <form className="px-6 pt-6 pb-4">
                         <div>
 
                         <label className="track-wide uppercase text-gray-700 text-xx font-semibold mb-2 block"
@@ -41,7 +55,7 @@ const AddTask = () => {
                             className="w-full big-gray-200 test-grey-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white"
                                 id="project-name"
                                 projectName="ProjectName"
-                                type="text" 
+                                type="text"
                                 placeholder="project Name"
                                 value={projectName}
                                 onChange={handleInput}
@@ -55,8 +69,11 @@ const AddTask = () => {
                             <textarea 
                             className="w-full big-gray-200 test-grey-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white" 
                             id="task-description"
+                            name="taskDescription"
                             rows="5"
                             placeholder="Task Description"
+                            value={taskDescription}
+                            onChange={handleInput}
                             >
 
                             </textarea>
