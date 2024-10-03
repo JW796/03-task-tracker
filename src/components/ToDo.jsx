@@ -1,6 +1,13 @@
 import EditTask from "./EditTask";
 
 const ToDo = ({ task, index, taskList, setTaskList }) => {
+
+    const habdleDelete = itemID => {
+        let removeIndex = taskList.indexOf(task);
+        taskList.splice(removeIndex, 1);
+        setTaskList((currentTasks => currentTasks.filter (todo => todo.id !== itemID)))
+    }
+
     return(
         <>
             <div className="flex flex-col items-start justify-start bg-white my-4 ml-6 py-4 w-3/4 max-w-lg">
