@@ -2,7 +2,7 @@ import EditTask from "./EditTask";
 
 const ToDo = ({ task, index, taskList, setTaskList }) => {
 
-    const habdleDelete = itemID => {
+    const handleDelete = (itemID) => {
         let removeIndex = taskList.indexOf(task);
         taskList.splice(removeIndex, 1);
         setTaskList((currentTasks => currentTasks.filter (todo => todo.id !== itemID)))
@@ -17,7 +17,11 @@ const ToDo = ({ task, index, taskList, setTaskList }) => {
             </div>
                 <p className="text-lg py-2">{task.taskDescription}</p>
                 <div className="w-full flex justify-center">
-                    <button className="bg-red-500 text-white text-sm uppercase font-semibold py-3 mt-6 mb-1 rounded-lg">Delete</button>
+                    <button className="bg-red-500 text-white text-sm uppercase font-semibold py-3 mt-6 mb-1 rounded-lg"
+                    onClick={handleDelete}
+                    >
+                        Delete
+                    </button>
                 </div>
             </div>
         </>
