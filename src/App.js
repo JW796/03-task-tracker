@@ -4,7 +4,8 @@ import AddTask from "./components/AddTask";
 import ToDo from "./components/ToDo";
 
 function App() {
-  const { taskList, setTaskList } = useState([]);
+  const [taskList, setTaskList] = useState([]);
+  const [completed, setCompleted] = useState([]);
 
   useEffect(() => {
     let array = localStorage.getItem("taskList");
